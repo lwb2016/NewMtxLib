@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fl_web"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="top.newmtx.app.WebUi">
+    <TextView
+        android:id="@+id/tv_add"
+        android:text=""
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+    <TextView
+        android:id="@+id/tv_setting"
+        android:text="点击设置"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="50dp"
+        android:gravity="center"/>
+    <TextView
+        android:id="@+id/tv_reqting"
+        android:text="点击请求"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="100dp"
+        android:gravity="center"/>
+
+
+
+</FrameLayout>

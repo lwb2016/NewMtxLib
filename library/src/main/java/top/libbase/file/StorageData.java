@@ -3,8 +3,11 @@ package top.libbase.file;
 import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.os.StatFs;
 import android.os.storage.StorageManager;
+import android.text.TextUtils;
 
+import java.io.File;
 import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -21,12 +24,31 @@ public class StorageData implements Parcelable {
 
     private String path;
 
+    private long totalSize;
+    private long availableSize;
+
     public StorageData() {
     }
 
     public StorageData(String label, String path) {
         this.label = label;
         this.path = path;
+    }
+
+    public long getTotalSize() {
+        return totalSize;
+    }
+
+    public void setTotalSize(long totalSize) {
+        this.totalSize = totalSize;
+    }
+
+    public long getAvailableSize() {
+        return availableSize;
+    }
+
+    public void setAvailableSize(long availableSize) {
+        this.availableSize = availableSize;
     }
 
     public String getLabel() {
@@ -60,7 +82,9 @@ public class StorageData implements Parcelable {
                 Object storageVolumeElement = Array.get(result, i);
                 String userLabel = (String) getUserLabel.invoke(storageVolumeElement);
                 String path = (String) getPath.invoke(storageVolumeElement);
-                dataList.add(new StorageData(userLabel,path));
+                StorageData data = new StorageData(userLabel, path);
+                data.initSize();
+                dataList.add(data);
             }
             return dataList;
         } catch (ClassNotFoundException e) {
@@ -102,4 +126,19 @@ public class StorageData implements Parcelable {
             return new StorageData[size];
         }
     };
+
+
+    /**
+     * 初始化当前的大小
+     */
+    public void initSize() {
+        if(TextUtils.isEmpty(path))
+            return ;
+        //File file=new File(path);
+        StatFs stat = new StatFs(path);
+        long blockSize = stat.getBlockSize();
+        totalSize = stat.getBlockCount()*blockSize;
+
+        availableSize = stat.getAvailableBlocks()*blockSize;
+    }
 }

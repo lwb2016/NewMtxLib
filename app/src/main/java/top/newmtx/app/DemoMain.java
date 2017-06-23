@@ -25,23 +25,28 @@ public class DemoMain extends LauncherActivity {
 
     private List<Intent> fillClassArray() {
         List<Intent> list=new ArrayList<>();
-        list.add(new Intent(this,ClipListViewDemo.class));
-        list.add(new Intent(this,ClipGridViewDemo.class));
-        list.add(new Intent(this,ClipRecycleViewDemo.class));
+        list.add(new Intent(this,X5WebUi.class));
         list.add(new Intent(this,WebUi.class));
-        list.add(getAppDetailSettingIntent());
-        list.add(new Intent(this,AppSettingWebUi.class));
+
+//        list.add(new Intent(this,ClipListViewDemo.class));
+//        list.add(new Intent(this,ClipGridViewDemo.class));
+//        list.add(new Intent(this,ClipRecycleViewDemo.class));
+//        list.add(new Intent(this,WebUi.class));
+//        list.add(getAppDetailSettingIntent());
+//        list.add(new Intent(this,AppSettingWebUi.class));
         return list;
     }
 
     private List<String> fillArray() {
         List<String> list=new ArrayList<>();
-        list.add("ListView侧滑测试");
-        list.add("GridView侧滑测试");
-        list.add("RecycleView侧滑测试");
-        list.add("WebView测试");
-        list.add("app 安装界面测试");
-        list.add("miui权限测试 安装界面测试");
+        list.add("X5web 超展开");
+        list.add("原生web 超展开");
+//        list.add("ListView侧滑测试");
+//        list.add("GridView侧滑测试");
+//        list.add("RecycleView侧滑测试");
+//        list.add("WebView测试");
+//        list.add("app 安装界面测试");
+//        list.add("miui权限测试 安装界面测试");
         return list;
     }
 

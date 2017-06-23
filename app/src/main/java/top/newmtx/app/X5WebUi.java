@@ -7,13 +7,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
-import android.webkit.WebView;
 import android.widget.FrameLayout;
 
 import com.oacg.chromeweb.BaseWebClient;
-import com.oacg.chromeweb.chrome.ChromeWebViewClient;
+import com.oacg.chromeweb.x5web.X5WebViewClient;
+import com.tencent.smtt.sdk.WebView;
 
-public class WebUi extends Activity implements BaseWebClient.WebClientListener{
+public class X5WebUi extends Activity implements BaseWebClient.WebClientListener{
     FrameLayout fl_web;
     private BaseWebClient<WebView> mWebViewBaseWebClient;
 
@@ -25,12 +25,13 @@ public class WebUi extends Activity implements BaseWebClient.WebClientListener{
         setContentView(R.layout.activity_web_ui);
         fl_web= (FrameLayout) findViewById(R.id.fl_web);
 
-        mWebViewBaseWebClient=new ChromeWebViewClient(this,fl_web);
+        mWebViewBaseWebClient=new X5WebViewClient(this,fl_web);
         mWebViewBaseWebClient.setClientListener(this);
         mWebViewBaseWebClient.onCreate();
 
         mWebViewBaseWebClient.getWebView().loadUrl("http://192.168.1.123:5963/index.html");
-        //mWebViewBaseWebClient.getWebView().loadUrl("https://www.baidu.com/");
+        //mWebViewBaseWebClient.getWebView().loadUrl("https://www.baidu.com");
+
     }
 
     @Override

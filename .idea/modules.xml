@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/NewMtx.iml" filepath="$PROJECT_DIR$/NewMtx.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chromeweb/chromeweb.iml" filepath="$PROJECT_DIR$/chromeweb/chromeweb.iml" />
       <module fileurl="file://$PROJECT_DIR$/cliplibrary/cliplibrary.iml" filepath="$PROJECT_DIR$/cliplibrary/cliplibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
     </modules>

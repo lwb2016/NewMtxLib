@@ -1,1 +1,1 @@
-include ':app', ':cliplibrary', ':library'
+include ':app', ':cliplibrary', ':library', ':chromeweb'

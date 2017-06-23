@@ -1,13 +1,16 @@
 package top.newmtx.app;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SimpleItemAnimator;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -46,8 +49,47 @@ public class ClipRecycleViewDemo extends Activity {
 
         rv_list.setAdapter(mRecycleAdapter);
         ((SimpleItemAnimator)rv_list.getItemAnimator()).setSupportsChangeAnimations(false);
-
+        initRecycleView();
     }
+
+
+    private long lastTime=-1;
+    private float last_x=-1;
+
+    private void initRecycleView(){
+        rv_list.setOnTouchListener(new View.OnTouchListener() {
+            @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        long l = System.currentTimeMillis();
+                        if(l-lastTime<300){
+                            if(rv_list.getScaleX()>1){
+                                rv_list.setScaleX(1);
+                                rv_list.setScaleY(1);
+                            }else{
+                                last_x=event.getX();
+                                rv_list.setScaleX(2);
+                                rv_list.setScaleY(2);
+                            }
+                            return true;
+                        }
+                        lastTime=l;
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        if(rv_list.getScaleX()>1){
+                            rv_list.scrollBy((int) (event.getX()-last_x),0);
+                            last_x=event.getX();
+                            return true;
+                        }
+                }
+                return false;
+            }
+        });
+    }
+
+
 
     private int width=80;
 
